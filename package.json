@@ -1,10 +1,11 @@
 {
   "name": "oddint",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "license": "MIT",
   "scripts": {
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "test": "NODE_ENV=test ./node_modules/.bin/jest --ci --verbose"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
@@ -22,5 +23,15 @@
     "prettier": "^2.0.5",
     "typescript": "^4.0.2",
     "typescript-eslint": "^0.0.1-alpha.0"
+  },
+  "lint-staged": {
+    "*.{js,ts}": [
+      "eslint --fix"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
